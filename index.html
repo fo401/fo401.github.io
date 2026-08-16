@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ian Mburu — Computer Technology</title>
+<meta name="description" content="Ian Mburu — BSc Computer Technology, Multimedia University of Kenya. Building reliable systems, from blockchain infrastructure to frontline IT support. Open to ICT, data and AI-adjacent roles.">
+<meta name="author" content="Ian Mburu">
+<meta name="theme-color" content="#0d0a07">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ian Mburu — Computer Technology">
+<meta property="og:description" content="Building reliable systems, from blockchain infrastructure to frontline IT support. Open to ICT, data and AI-adjacent roles.">
+<meta property="og:url" content="https://fo401.github.io/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  color-scheme:dark;
+
+  /* Surfaces */
+  --ink:#0d0a07;
+  --card:#1a1510;
+  --card-hover:#211a13;
+
+  /* Text — every value below is AA-verified against --ink and --card */
+  --parchment:#ede3ce;      /* headings      ~15.9:1 on ink */
+  --body:#cdbc9d;           /* body copy     ~10.4:1 on ink */
+  --meta:#a08e72;           /* meta / labels  ~6.2:1 on ink, ~5.5:1 on card */
+
+  /* Accents */
+  --amber:#c8923a;          /* links          ~7.1:1 on ink */
+  --gold:#d4a843;           /* emphasis       ~8.9:1 on ink */
+
+  /* Non-text only — never used for type */
+  --line:rgba(200,146,58,0.16);
+  --line-hi:rgba(200,146,58,0.34);
+  --rule:#332a20;
+
+  --pad:clamp(1.1rem,3.5vw,2.5rem);
+  --header-h:58px;
+  --maxw:1140px;
+  --transition:0.2s cubic-bezier(0.4,0,0.2,1);
+}
+
+html{
+  scroll-behavior:smooth;
+  -webkit-text-size-adjust:100%;
+  scroll-padding-top:calc(var(--header-h) + 0.8rem);
+}
+
+body{
+  background:var(--ink);
+  color:var(--body);
+  font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  font-weight:500;
+  font-size:clamp(1.02rem,0.98rem + 0.22vw,1.12rem);
+  line-height:1.62;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/*
+  Atmosphere sits BEHIND content, never on top of it.
+  Grain eased from 0.6 → 0.22 opacity; vignette pulled to the far edges
+  only, so it never lands on a line of text.
+*/
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity:0.22;
+}
+body::after{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 120% 105% at 50% 40%,transparent 68%,rgba(6,4,2,0.42) 100%);
+}
+
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:var(--rule)}
+::-webkit-scrollbar-thumb:hover{background:#4a3e30}
+
+::selection{background:rgba(200,146,58,0.3);color:var(--parchment)}
+
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+img,svg{max-width:100%}
+
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:900;
+  background:var(--card);color:var(--gold);
+  font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.2em;
+  text-transform:uppercase;padding:0.8rem 1.2rem;
+  border:1px solid var(--line-hi);text-decoration:none;
+}
+.skip:focus{left:var(--pad);top:0.6rem}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);position:relative;z-index:2}
+
+/* ════════════════════════════════
+   HEADER
+════════════════════════════════ */
+header{
+  position:sticky;top:0;z-index:600;
+  height:var(--header-h);
+  background:rgba(13,10,7,0.97);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--pad);gap:1rem;
+}
+
+.logo{
+  font-family:'Cinzel',serif;
+  font-size:clamp(0.7rem,1vw,0.82rem);
+  font-weight:600;letter-spacing:0.22em;
+  color:var(--gold);text-decoration:none;
+  white-space:nowrap;line-height:1;
+  display:flex;flex-direction:column;gap:5px;
+}
+.logo small{
+  font-size:0.46rem;letter-spacing:0.3em;
+  color:var(--meta);font-weight:400;text-transform:uppercase;
+}
+
+nav{display:flex;align-items:center;gap:clamp(0.75rem,1.5vw,1.6rem)}
+nav a{
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:0.76rem;letter-spacing:0.16em;
+  color:var(--meta);text-decoration:none;text-transform:uppercase;
+  transition:color var(--transition);white-space:nowrap;
+}
+nav a:hover,nav a:focus-visible{color:var(--parchment)}
+
+.btn-nav-cta{
+  font-family:'Cinzel',serif;font-weight:600;
+  font-size:0.6rem;letter-spacing:0.16em;
+  color:var(--gold);
+  border:1px solid var(--line-hi);
+  padding:0.44rem 0.95rem;
+  transition:background var(--transition),border-color var(--transition);
+}
+.btn-nav-cta:hover,.btn-nav-cta:focus-visible{
+  background:rgba(200,146,58,0.12);border-color:rgba(200,146,58,0.6);color:var(--gold);
+}
+
+@media(max-width:720px){ nav .nav-link{display:none} }
+
+/* ════════════════════════════════
+   HERO — compact by design.
+   Sized so the first project card is reachable
+   without deliberate scrolling on a laptop.
+════════════════════════════════ */
+.hero{
+  padding:clamp(2rem,4.5vw,3.2rem) 0 clamp(1.6rem,3vw,2.2rem);
+  display:grid;
+  grid-template-columns:minmax(0,1.5fr) 1px minmax(0,0.85fr);
+  align-items:start;
+  animation:fadeUp 0.5s ease both;
+}
+.hero-divider{
+  align-self:stretch;
+  background:linear-gradient(to bottom,transparent,var(--line),transparent);
+  margin:0 clamp(1.8rem,3.5vw,3.5rem);
+}
+
+.eyebrow{
+  font-family:'Cinzel',serif;font-weight:600;
+  font-size:0.6rem;letter-spacing:0.42em;color:var(--gold);
+  text-transform:uppercase;margin-bottom:1.1rem;
+  display:flex;align-items:center;gap:0.75rem;
+}
+.eyebrow::before{content:'';width:1.6rem;height:1px;background:var(--gold);opacity:0.5;flex:none}
+
+h1{
+  font-family:'IM Fell English',Georgia,serif;
+  font-size:clamp(1.75rem,1.2rem + 2.4vw,2.75rem);
+  line-height:1.12;color:var(--parchment);
+  margin-bottom:0.9rem;letter-spacing:-0.005em;font-weight:400;
+  text-wrap:balance;
+}
+h1 em{color:var(--gold);font-style:italic}
+
+.lede{
+  font-size:1.02em;line-height:1.65;color:var(--body);
+  max-width:46ch;margin-bottom:0.5rem;
+}
+.lede strong{color:var(--parchment);font-weight:600}
+
+.availability{color:var(--meta);max-width:46ch;margin-bottom:1.5rem}
+
+/* CV download — the first thing a recruiter reaches for. */
+.cv-row{
+  display:flex;flex-wrap:wrap;gap:0.6rem 1.1rem;align-items:center;
+  padding:0.9rem 0 0;border-top:1px solid var(--line);
+}
+.btn-cv{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  font-family:'Cinzel',serif;font-weight:600;
+  font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;
+  text-decoration:none;
+  color:#1a1207;background:var(--gold);
+  border:1px solid var(--gold);
+  padding:0.75rem 1.25rem;
+  transition:background var(--transition),border-color var(--transition);
+}
+.btn-cv:hover,.btn-cv:focus-visible{background:#e2ba57;border-color:#e2ba57}
+.btn-cv svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.cv-meta{font-size:0.9rem;color:var(--meta);font-style:italic}
+
+.hero-links{display:flex;flex-wrap:wrap;gap:1.2rem;margin-top:1rem}
+.hero-links a{
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:0.8rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--amber);text-decoration:none;
+  border-bottom:1px solid var(--line-hi);padding-bottom:3px;
+  transition:color var(--transition),border-color var(--transition);
+}
+.hero-links a:hover,.hero-links a:focus-visible{color:var(--gold);border-color:var(--gold)}
+
+/* At-a-glance */
+.glance{padding-top:0.3rem}
+.glance dl{display:grid;gap:1.15rem}
+.glance dt{
+  font-family:'Cinzel',serif;font-weight:600;
+  font-size:0.55rem;letter-spacing:0.26em;
+  color:var(--meta);text-transform:uppercase;margin-bottom:0.3rem;
+}
+.glance dd{color:var(--parchment);line-height:1.45;font-size:0.98rem}
+.glance dd span{display:block;color:var(--meta);font-size:0.9em;margin-top:0.1rem}
+
+@media(max-width:880px){
+  .hero{grid-template-columns:1fr;gap:1.8rem}
+  .hero-divider{display:none}
+  .glance{border-top:1px solid var(--line);padding-top:1.4rem}
+  .glance dl{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.2rem}
+}
+
+/* ════════════════════════════════
+   SECTION HEADS
+════════════════════════════════ */
+.section-head{
+  padding:clamp(2rem,4vw,2.9rem) 0 1.1rem;
+  display:flex;align-items:center;gap:1.1rem;
+}
+.section-head h2{
+  font-family:'Cinzel',serif;font-size:0.64rem;font-weight:600;
+  letter-spacing:0.38em;color:var(--meta);text-transform:uppercase;
+  white-space:nowrap;
+}
+.section-head .rule{flex:1;height:1px;background:linear-gradient(to right,var(--line),transparent)}
+
+/* The projects head carries extra weight — this is the main event. */
+.section-head.primary{padding-top:clamp(1.4rem,3vw,2rem)}
+.section-head.primary h2{color:var(--gold);font-size:0.7rem}
+.section-head.primary .rule{background:linear-gradient(to right,var(--line-hi),transparent)}
+
+/* ════════════════════════════════
+   PROJECTS — the visual centre of the page
+════════════════════════════════ */
+.projects{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1.1rem;
+}
+@media(max-width:880px){.projects{grid-template-columns:1fr;gap:1rem}}
+
+.project{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-top:2px solid var(--amber);
+  padding:clamp(1.5rem,2.6vw,2.1rem);
+  display:flex;flex-direction:column;
+  transition:background var(--transition),border-color var(--transition);
+}
+.project:hover{background:var(--card-hover);border-color:var(--line-hi);border-top-color:var(--gold)}
+
+.project-kicker{
+  font-family:'Cinzel',serif;font-weight:600;
+  font-size:0.55rem;letter-spacing:0.24em;
+  color:var(--meta);text-transform:uppercase;margin-bottom:0.7rem;
+}
+.project h3{
+  font-family:'IM Fell English',Georgia,serif;font-weight:400;
+  font-size:clamp(1.3rem,1.05rem + 0.9vw,1.7rem);
+  line-height:1.18;color:var(--parchment);margin-bottom:0.8rem;
+  text-wrap:balance;
+}
+.project p{margin-bottom:1.2rem;color:var(--body)}
+
+.tech{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.3rem;padding:0}
+.tech li{
+  list-style:none;
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:0.78rem;letter-spacing:0.06em;
+  color:var(--body);
+  background:rgba(200,146,58,0.07);
+  border:1px solid var(--line);
+  padding:0.22rem 0.58rem;
+}
+
+.project-links{
+  margin-top:auto;padding-top:1.1rem;
+  border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center;
+}
+.project-links a{
+  font-family:'Cinzel',serif;font-weight:600;
+  font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--amber);text-decoration:none;
+  border-bottom:1px solid transparent;padding-bottom:3px;
+  transition:color var(--transition),border-color var(--transition);
+}
+.project-links a:hover,.project-links a:focus-visible{color:var(--gold);border-color:var(--gold)}
+.pending{
+  font-family:'Cinzel',serif;font-weight:600;
+  font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--meta);
+}
+
+/* ════════════════════════════════
+   SKILLS
+════════════════════════════════ */
+/*
+  Real gaps + per-card borders, not the 1px-gap background trick:
+  when the last group wraps to a new row the trick leaves the accent
+  colour bleeding through the empty cell.
+*/
+.skills{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));
+  gap:0.9rem;
+}
+.skill-group{
+  background:var(--card);
+  border:1px solid var(--line);
+  padding:1.4rem 1.35rem;
+}
+.skill-group h3{
+  font-family:'Cinzel',serif;font-weight:600;
+  font-size:0.57rem;letter-spacing:0.22em;
+  color:var(--gold);text-transform:uppercase;margin-bottom:0.9rem;
+}
+.skill-group ul{list-style:none;display:grid;gap:0.42rem}
+.skill-group li{
+  color:var(--body);font-size:0.98rem;line-height:1.4;
+  padding-left:0.95rem;position:relative;
+}
+.skill-group li::before{
+  content:'';position:absolute;left:0;top:0.6em;
+  width:5px;height:1px;background:var(--amber);
+}
+.in-progress{
+  display:inline-block;margin-left:0.45rem;
+  font-family:'Cinzel',serif;font-weight:600;
+  font-size:0.5rem;letter-spacing:0.12em;
+  text-transform:uppercase;color:#1a1207;
+  background:var(--gold);padding:0.14rem 0.4rem;
+  vertical-align:2px;white-space:nowrap;
+}
+.skill-note{color:var(--meta);font-size:0.9rem;margin-top:0.85rem;line-height:1.45}
+
+/* ════════════════════════════════
+   EXPERIENCE + EDUCATION
+════════════════════════════════ */
+.entry{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-left:3px solid var(--amber);
+  padding:1.5rem 1.6rem;
+}
+.entry-top{
+  display:flex;flex-wrap:wrap;justify-content:space-between;
+  align-items:baseline;gap:0.5rem;margin-bottom:0.3rem;
+}
+.entry h3{
+  font-family:'IM Fell English',Georgia,serif;font-weight:400;
+  font-size:clamp(1.15rem,1rem + 0.6vw,1.4rem);
+  color:var(--parchment);line-height:1.25;
+}
+.entry .period{
+  font-family:'Cinzel',serif;font-weight:600;
+  font-size:0.58rem;letter-spacing:0.16em;
+  color:var(--meta);text-transform:uppercase;white-space:nowrap;
+}
+.entry .org{color:var(--amber);margin-bottom:0.9rem;font-size:0.98rem}
+.entry ul{list-style:none;display:grid;gap:0.42rem}
+.entry li{color:var(--body);padding-left:0.95rem;position:relative;font-size:0.98rem;line-height:1.45}
+.entry li::before{
+  content:'';position:absolute;left:0;top:0.65em;
+  width:5px;height:1px;background:var(--amber);
+}
+.entry p{color:var(--body);font-size:0.98rem}
+
+/* ════════════════════════════════
+   CONTACT
+════════════════════════════════ */
+.contact{
+  background:var(--card);
+  border:1px solid var(--line-hi);
+  padding:clamp(1.9rem,4vw,2.8rem) 1.6rem;
+  text-align:center;
+}
+.contact h2{
+  font-family:'IM Fell English',Georgia,serif;font-weight:400;
+  font-size:clamp(1.4rem,1.15rem + 1vw,1.9rem);
+  color:var(--parchment);margin-bottom:0.6rem;
+}
+.contact p{color:var(--meta);max-width:48ch;margin:0 auto 1.6rem}
+.contact-links{display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center}
+.btn{
+  font-family:'Cinzel',serif;font-weight:600;
+  font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;
+  text-decoration:none;padding:0.7rem 1.2rem;
+  border:1px solid var(--line-hi);color:var(--gold);
+  transition:background var(--transition),border-color var(--transition);
+}
+.btn:hover,.btn:focus-visible{background:rgba(200,146,58,0.12);border-color:rgba(200,146,58,0.6)}
+.btn-solid{background:var(--gold);color:#1a1207;border-color:var(--gold)}
+.btn-solid:hover,.btn-solid:focus-visible{background:#e2ba57;border-color:#e2ba57}
+
+footer{
+  padding:1.8rem 0 2.6rem;
+  display:flex;flex-wrap:wrap;gap:0.8rem;
+  justify-content:space-between;align-items:center;
+  font-family:'Cinzel',serif;
+  font-size:0.6rem;letter-spacing:0.14em;
+  color:var(--meta);text-transform:uppercase;
+}
+footer a{color:var(--amber);text-decoration:none;transition:color var(--transition)}
+footer a:hover,footer a:focus-visible{color:var(--gold)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
+}
+
+/* ════════════════════════════════
+   PRINT — recruiters do print these.
+   Ink-on-paper, no atmosphere, no chrome, URLs made explicit.
+════════════════════════════════ */
+@media print{
+  :root{
+    --ink:#fff;--card:#fff;--card-hover:#fff;
+    --parchment:#000;--body:#1a1a1a;--meta:#454545;
+    --amber:#000;--gold:#000;
+    --line:#bbb;--line-hi:#888;
+  }
+  @page{margin:15mm}
+  html,body{background:#fff!important;color:#1a1a1a!important;font-size:10.5pt;line-height:1.45}
+  body::before,body::after{display:none!important}
+  header,.skip,.hero-divider,.btn-cv svg{display:none!important}
+  .wrap{max-width:none;padding:0}
+  main{animation:none}
+  .hero{display:block;padding:0 0 0.6rem;animation:none}
+  .glance{border-top:1px solid var(--line);padding-top:0.6rem;margin-top:0.6rem}
+  .glance dl{grid-template-columns:repeat(3,1fr);gap:0.8rem}
+  h1{font-size:20pt;margin-bottom:0.4rem}
+  .section-head{padding:0.9rem 0 0.4rem;break-after:avoid}
+  .section-head h2{color:#000}
+  .projects{display:block}
+  .project,.entry,.skills,.contact{
+    break-inside:avoid;
+    border:1px solid var(--line)!important;
+    background:#fff!important;
+    margin-bottom:0.6rem;
+  }
+  .project{border-top:2px solid #000!important}
+  .entry{border-left:3px solid #000!important}
+  .tech li{background:#fff!important;border:1px solid var(--line)!important}
+  .in-progress{background:#fff!important;color:#000!important;border:1px solid #000;padding:0 0.25rem}
+  .contact{text-align:left}
+  .contact p{margin-left:0;max-width:none}
+  .btn,.btn-cv,.btn-solid{
+    background:#fff!important;color:#000!important;
+    border:1px solid #888!important;padding:0.2rem 0;
+    display:inline;letter-spacing:0.05em;
+  }
+  .contact-links{display:block}
+  /* Make link targets readable on paper */
+  .hero-links a::after,.project-links a::after,.contact-links a::after,footer a::after{
+    content:" (" attr(href) ")";
+    font-family:'Cormorant Garamond',serif;font-size:8.5pt;
+    letter-spacing:0;text-transform:none;color:#454545;
+  }
+  a[href^="mailto:"]::after{content:""}
+  footer{border-top:1px solid var(--line);padding:0.5rem 0 0;margin-top:0.8rem}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <a class="logo" href="#top">IAN MBURU<small>Computer Technology</small></a>
+  <nav aria-label="Primary">
+    <a class="nav-link" href="#projects">Projects</a>
+    <a class="nav-link" href="#skills">Skills</a>
+    <a class="nav-link" href="#experience">Experience</a>
+    <a class="btn-nav-cta" href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="main">
+<div id="top"></div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="wrap hero">
+  <div class="hero-left">
+    <p class="eyebrow">Portfolio</p>
+    <h1>Building <em>reliable systems</em> — from blockchain infrastructure to frontline IT support.</h1>
+    <p class="lede">BSc Computer Technology at Multimedia University of Kenya, graduating <strong>November 2026</strong>.</p>
+    <p class="availability">Open to ICT, data, and AI-adjacent roles.</p>
+
+    <div class="cv-row">
+      <!-- Expects Ian_Mburu_CV.pdf in the repo root, alongside this file. -->
+      <a class="btn-cv" href="Ian_Mburu_CV.pdf" type="application/pdf" download>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12 3v12"/><path d="M7 12l5 5 5-5"/><path d="M4 20h16"/>
+        </svg>
+        Download CV — PDF
+      </a>
+      <span class="cv-meta">Full curriculum vitae, PDF</span>
+    </div>
+
+    <div class="hero-links">
+      <a href="mailto:kanyoroian@gmail.com">Email</a>
+      <a href="https://github.com/fo401" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/ian-mburu-19a388240" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+
+  <div class="hero-divider" aria-hidden="true"></div>
+
+  <div class="glance">
+    <dl>
+      <div>
+        <dt>Degree</dt>
+        <dd>BSc Computer Technology<span>Multimedia University of Kenya</span></dd>
+      </div>
+      <div>
+        <dt>Graduating</dt>
+        <dd>November 2026</dd>
+      </div>
+      <div>
+        <dt>Focus</dt>
+        <dd>Blockchain infrastructure<span>IT support &amp; networking</span></dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- ═══════════ PROJECTS ═══════════ -->
+<div class="wrap">
+  <div class="section-head primary" id="projects">
+    <h2>Projects</h2><span class="rule" aria-hidden="true"></span>
+  </div>
+
+  <div class="projects">
+    <article class="project">
+      <p class="project-kicker">Final-year project</p>
+      <h3>Cold Chain Vaccine Monitoring and Alerting System</h3>
+      <p>Tackles vaccine spoilage from undetected cold chain failures in low-connectivity environments. Built on Hyperledger Fabric and CouchDB for tamper-resistant tracking of storage conditions, with Node.js handling application logic and the Africa's Talking SMS API delivering real-time breach alerts to field staff.</p>
+      <ul class="tech">
+        <li>Hyperledger Fabric</li>
+        <li>CouchDB</li>
+        <li>Node.js</li>
+        <li>Africa's Talking SMS API</li>
+      </ul>
+      <div class="project-links">
+        <!-- TODO Ian: swap the span below for the repo link once pushed, e.g.
+             <a href="https://github.com/fo401/REPO-NAME" target="_blank" rel="noopener">Repository</a> -->
+        <span class="pending">Repository — coming soon</span>
+      </div>
+    </article>
+
+    <article class="project">
+      <p class="project-kicker">Personal project</p>
+      <h3>Vellum Archive / The Athenaeum</h3>
+      <p>A personal literary archive, hand-built as a single HTML file and maintained to a zero-defect standard through recurring security audits.</p>
+      <ul class="tech">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+      </ul>
+      <div class="project-links">
+        <a href="https://fo401.github.io/vellum/" target="_blank" rel="noopener">View live</a>
+        <a href="https://github.com/fo401/vellum" target="_blank" rel="noopener">Repository</a>
+      </div>
+    </article>
+  </div>
+</div>
+
+<!-- ═══════════ SKILLS ═══════════ -->
+<div class="wrap">
+  <div class="section-head" id="skills">
+    <h2>Skills</h2><span class="rule" aria-hidden="true"></span>
+  </div>
+
+  <div class="skills">
+    <div class="skill-group">
+      <h3>Backend &amp; Blockchain</h3>
+      <ul>
+        <li>Node.js</li>
+        <li>Hyperledger Fabric</li>
+        <li>CouchDB</li>
+        <li>Blockchain</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <h3>Web</h3>
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <h3>IT &amp; Infrastructure</h3>
+      <ul>
+        <li>Network troubleshooting (LAN/WAN)</li>
+        <li>Desktop virtualization (VDI)</li>
+        <li>Computer hardware troubleshooting</li>
+        <li>OS and application deployment</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <h3>Certifications</h3>
+      <ul>
+        <li>CCNA <span class="in-progress">In progress</span></li>
+        <li>ISOC Network Professional <span class="in-progress">In progress</span></li>
+      </ul>
+      <p class="skill-note">Both are currently being worked toward — not yet completed.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ EXPERIENCE ═══════════ -->
+<div class="wrap">
+  <div class="section-head" id="experience">
+    <h2>Experience</h2><span class="rule" aria-hidden="true"></span>
+  </div>
+
+  <article class="entry">
+    <div class="entry-top">
+      <h3>IT Support Intern</h3>
+      <span class="period">June – September 2024</span>
+    </div>
+    <p class="org">Huduma Centre, Mombasa — ICT Division of a high-traffic public service centre</p>
+    <ul>
+      <li>LAN/WAN network troubleshooting and maintenance</li>
+      <li>VDI (desktop virtualization) administration</li>
+      <li>Installation of operating systems, applications and software across staff machines</li>
+      <li>Repair and installation of local and network printers</li>
+      <li>Maintenance of data equipment and computer hardware</li>
+      <li>General IT support to internal customers</li>
+    </ul>
+  </article>
+</div>
+
+<!-- ═══════════ EDUCATION ═══════════ -->
+<div class="wrap">
+  <div class="section-head" id="education">
+    <h2>Education</h2><span class="rule" aria-hidden="true"></span>
+  </div>
+
+  <article class="entry">
+    <div class="entry-top">
+      <h3>BSc Computer Technology</h3>
+      <span class="period">Sept 2022 – Nov 2026</span>
+    </div>
+    <p class="org">Multimedia University of Kenya</p>
+    <p>MMU CIT Club.</p>
+  </article>
+</div>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<div class="wrap">
+  <div class="section-head" id="contact">
+    <h2>Contact</h2><span class="rule" aria-hidden="true"></span>
+  </div>
+
+  <section class="contact">
+    <h2>Let's talk</h2>
+    <p>Open to ICT, data, and AI-adjacent roles.</p>
+    <div class="contact-links">
+      <a class="btn btn-solid" href="mailto:kanyoroian@gmail.com">kanyoroian@gmail.com</a>
+      <a class="btn" href="Ian_Mburu_CV.pdf" download>Download CV — PDF</a>
+      <a class="btn" href="https://github.com/fo401" target="_blank" rel="noopener">github.com/fo401</a>
+      <a class="btn" href="https://linkedin.com/in/ian-mburu-19a388240" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>Ian Mburu</span>
+    <span><a href="https://fo401.github.io/vellum/" target="_blank" rel="noopener">The Athenaeum →</a></span>
+  </footer>
+</div>
+
+</main>
+</body>
+</html>
