@@ -1,2 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Never line-ending-normalize binaries — a "fixed" PNG is a corrupt PNG.
+*.png binary
+*.pdf binary

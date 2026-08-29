@@ -8,10 +8,30 @@
 <meta name="author" content="Ian Mburu">
 <meta name="theme-color" content="#0d0a07">
 
+<!--
+  Open Graph / Twitter Card.
+  og:image is an ABSOLUTE URL on purpose — several scrapers (LinkedIn among
+  them) will not resolve a relative path and fall back to a blank placeholder.
+  The card itself is generated from og-image.source.html; re-render it at
+  exactly 1200x630 if the name or positioning line ever changes.
+-->
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Ian Mburu">
 <meta property="og:title" content="Ian Mburu — Computer Technology">
 <meta property="og:description" content="Building reliable systems, from blockchain infrastructure to frontline IT support. Open to ICT, data and AI-adjacent roles.">
 <meta property="og:url" content="https://fo401.github.io/">
+<meta property="og:image" content="https://fo401.github.io/og-image.png">
+<meta property="og:image:secure_url" content="https://fo401.github.io/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ian Mburu — Building reliable systems, from blockchain infrastructure to frontline IT support.">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ian Mburu — Computer Technology">
+<meta name="twitter:description" content="Building reliable systems, from blockchain infrastructure to frontline IT support. Open to ICT, data and AI-adjacent roles.">
+<meta name="twitter:image" content="https://fo401.github.io/og-image.png">
+<meta name="twitter:image:alt" content="Ian Mburu — Building reliable systems, from blockchain infrastructure to frontline IT support.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
