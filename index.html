@@ -587,18 +587,23 @@ footer a:hover,footer a:focus-visible{color:var(--gold)}
   <div class="projects">
     <article class="project">
       <p class="project-kicker">Final-year project</p>
-      <h3>Cold Chain Vaccine Monitoring and Alerting System</h3>
-      <p>Tackles vaccine spoilage from undetected cold chain failures in low-connectivity environments. Built on Hyperledger Fabric and CouchDB for tamper-resistant tracking of storage conditions, with Node.js handling application logic and the Africa's Talking SMS API delivering real-time breach alerts to field staff.</p>
+      <h3>Decentralized Cold Chain Vaccine Monitoring and Alerting Blockchain System</h3>
+      <p>A permissioned Hyperledger Fabric network spanning two organisations — the Ministry of Health and KEMSA — records every sensor reading to a shared ledger, so vaccine temperature history is jointly held and auditable rather than self-reported by whoever holds the stock.</p>
+      <p>Heat and freeze breaches are handled differently by design: readings above +8&nbsp;°C escalate sequentially through four tiers on WHO time windows, while readings below −0.5&nbsp;°C broadcast to every role at once, because potency loss from freezing is irreversible within the hour. Readings buffered offline and replayed past the damage window route straight to mandatory quarantine.</p>
+      <p>Every quarantine decision writes to an immutable six-step chain of custody, and five roles — Facility Custodian through National EPI Manager — get scope-filtered real-time dashboards, with PII kept off-chain in line with the Kenya Data Protection Act 2019. Verified against a live Fabric network: 13 chaincode functions on a real ledger, three escalation modes end to end, 87/87 backend tests passing.</p>
       <ul class="tech">
-        <li>Hyperledger Fabric</li>
-        <li>CouchDB</li>
+        <li>Hyperledger Fabric v2.5 (RAFT, CouchDB)</li>
         <li>Node.js</li>
+        <li>Express</li>
+        <li>React</li>
+        <li>Socket.io</li>
+        <li>MySQL</li>
+        <li>MQTT</li>
         <li>Africa's Talking SMS API</li>
       </ul>
       <div class="project-links">
-        <!-- TODO Ian: swap the span below for the repo link once pushed, e.g.
-             <a href="https://github.com/fo401/REPO-NAME" target="_blank" rel="noopener">Repository</a> -->
-        <span class="pending">Repository — coming soon</span>
+        <a href="https://github.com/fo401/cold-chain-system" target="_blank" rel="noopener">Repository</a>
+        <a href="https://github.com/fo401/cold-chain-system/blob/main/docs/chapters/figures/fig5_1_architecture.png" target="_blank" rel="noopener">Architecture diagram</a>
       </div>
     </article>
 
