@@ -301,12 +301,6 @@ h1 em{color:var(--teal);font-style:normal}
 }
 .project:hover{background:var(--card-hover);border-color:var(--line-hi);border-top-color:var(--teal-brighter)}
 
-.project-kicker{
-  font-family:var(--mono);font-weight:600;
-  font-size:0.66rem;letter-spacing:0.1em;
-  color:var(--meta);text-transform:uppercase;margin-bottom:0.7rem;
-}
-.project-kicker::before{content:'// ';color:var(--teal-bright)}
 .project h3{
   font-family:var(--mono);font-weight:700;
   font-size:clamp(1.05rem,0.92rem + 0.7vw,1.35rem);
@@ -540,7 +534,7 @@ footer a:hover,footer a:focus-visible{color:var(--teal-brighter)}
   <div class="hero-left">
     <p class="eyebrow">Portfolio</p>
     <h1>Building <em>reliable systems</em> — from blockchain infrastructure to frontline IT support.</h1>
-    <p class="lede">BSc Computer Technology at Multimedia University of Kenya, graduating <strong>November 2026</strong>.</p>
+    <p class="lede">BSc Computer Technology at Multimedia University of Kenya.</p>
     <p class="availability">Open to ICT, data, and AI-adjacent roles.</p>
 
     <div class="cv-row">
@@ -570,12 +564,8 @@ footer a:hover,footer a:focus-visible{color:var(--teal-brighter)}
         <dd>BSc Computer Technology<span>Multimedia University of Kenya</span></dd>
       </div>
       <div>
-        <dt>Graduating</dt>
-        <dd>November 2026</dd>
-      </div>
-      <div>
         <dt>Focus</dt>
-        <dd>Blockchain infrastructure<span>IT support &amp; networking</span></dd>
+        <dd>Full-stack &amp; distributed systems<span>Networking, security &amp; IT support</span></dd>
       </div>
     </dl>
   </div>
@@ -589,7 +579,6 @@ footer a:hover,footer a:focus-visible{color:var(--teal-brighter)}
 
   <div class="projects">
     <article class="project">
-      <p class="project-kicker">Final-year project</p>
       <h3>Decentralized Cold Chain Vaccine Monitoring and Alerting Blockchain System</h3>
       <p>A permissioned Hyperledger Fabric network spanning two organisations — the Ministry of Health and KEMSA — records every sensor reading to a shared ledger, so vaccine temperature history is jointly held and auditable rather than self-reported by whoever holds the stock.</p>
       <p>Heat and freeze breaches are handled differently by design: readings above +8&nbsp;°C escalate sequentially through four tiers on WHO time windows, while readings below −0.5&nbsp;°C broadcast to every role at once, because potency loss from freezing is irreversible within the hour. Readings buffered offline and replayed past the damage window route straight to mandatory quarantine.</p>
@@ -611,7 +600,6 @@ footer a:hover,footer a:focus-visible{color:var(--teal-brighter)}
     </article>
 
     <article class="project">
-      <p class="project-kicker">Personal project</p>
       <h3>Vellum Archive / The Athenaeum</h3>
       <p>A personal literary archive, hand-built as a single HTML file and maintained to a zero-defect standard through recurring security audits.</p>
       <ul class="tech">
@@ -758,7 +746,7 @@ footer a:hover,footer a:focus-visible{color:var(--teal-brighter)}
   <article class="entry">
     <div class="entry-top">
       <h3>BSc Computer Technology</h3>
-      <span class="period">Sept 2022 – Nov 2026</span>
+      <span class="period">Sept 2022 – Present</span>
     </div>
     <p class="org">Multimedia University of Kenya</p>
     <p>MMU CIT Club.</p>
